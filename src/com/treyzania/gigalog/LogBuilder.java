@@ -31,7 +31,7 @@ public class LogBuilder {
 		try {
 			input = new Scanner(new FileInputStream(f));
 		} catch (FileNotFoundException e) {
-			System.out.println("Error: Base log file.");
+			System.out.println("Error: Input file does not exist.");
 			System.exit(-1);
 		}
 		

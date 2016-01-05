@@ -67,11 +67,14 @@ public class Giga {
 			
 			try {
 				
-				outFile.createNewFile();
 				outFile.getParentFile().mkdirs();
+				outFile.createNewFile();
 				
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
+				System.exit(-1);
+			} catch (NullPointerException npe) {
+				npe.printStackTrace();
 				System.exit(-1);
 			}
 			

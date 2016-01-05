@@ -12,7 +12,7 @@ import java.util.Set;
 public class Log {
 
 	public final File file;
-	public Set<Long> importantLines;
+	private Set<Long> importantLines;
 	
 	public Log(File f) {
 		

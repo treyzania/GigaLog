@@ -18,9 +18,7 @@ public class Line {
 
 	@Override
 	public String toString() {
-		
-		return String.format("%" + maxDigits + "d", this.number) + ": " + text;
-		
+		return String.format("%" + maxDigits + "d: %s", this.number, text);
 	}
 	
 }

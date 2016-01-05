@@ -26,6 +26,10 @@ public class Log {
 		if (!this.importantLines.contains(num)) this.importantLines.add(num);
 	}
 	
+	public long getFlagCount() {
+		return this.importantLines.size();
+	}
+	
 	/**
 	 * Pass 2 of the manifest generation.
 	 * 

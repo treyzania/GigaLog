@@ -34,6 +34,7 @@ public class RulesetBuilder {
 		}
 		
 		System.out.println("Loaded " + rules.size() + " rules.");
+		input.close();
 		
 		return new Ruleset(rules.toArray(new String[rules.size()][]));
 		

@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class LogBuilder {
 
+	private static final int NOTIFICATION_PERIOD = 1000; // Lines.
+	
 	public final Ruleset rules;
 	public final int spread; // Inclusive.
 	
@@ -58,9 +60,14 @@ public class LogBuilder {
 				
 			}
 			
+			if (line % NOTIFICATION_PERIOD == 0) System.out.println("Processed " + line + " lines.");
+			
 			line++;
 			
 		}
+		
+		System.out.println("Flagged " + output.getFlagCount() + " lines.");
+		input.close();
 		
 		return output;
 		

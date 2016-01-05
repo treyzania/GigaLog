@@ -12,13 +12,50 @@ public class Giga {
 	
 	public static void main(String[] args) {
 		
-		// TODO Main sequence.
+		int spread = 0;
+		String rulesFilename = "";
+		String logFilename = "";
+		
+		if (args.length < 2) {
+			
+			System.out.println("Usage: gigalog [-s <spread>] <rules> <log file>");
+			
+		}
+		
+		if (args.length == 4 && args[0].equals("-s")) {
+			
+			spread = Integer.parseInt(args[1]);
+			
+			rulesFilename = args[2];
+			logFilename = args[3];
+			
+		} else if (args.length == 2) {
+			
+			rulesFilename = args[0];
+			logFilename = args[1];
+			
+		}
+		
+		// Place a ".giga" before the last "extension".
+		String[] splitFilename = logFilename.split("\\.");
+		StringBuilder sb = new StringBuilder(splitFilename[0]);
+		for (int i = 1; i < splitFilename.length - 1; i++) sb.append("." + splitFilename[i]);
+		sb.append(".giga");
+		sb.append("." + splitFilename[splitFilename.length - 1]);
+		
+		// Assemble the ruleset and generate the log file.
+		RulesetBuilder rb = new RulesetBuilder();
+		Ruleset rules = rb.buildRuleset(new File(rulesFilename));
+		LogBuilder lb = new LogBuilder(rules, spread);
+		Log log = lb.buildLog(new File(logFilename));
+		
+		System.out.println("Writing manifest...");
+		writeLines(new File(sb.toString()), log.getFlaggedLines());
+		System.out.println("Done writing manifest!");
 		
 	}
 	
 	public static void writeLines(File outFile, List<Line> lines) {
-		
-		System.out.println("Writing manifest.");
 		
 		StringBuilder sb = new StringBuilder(LOG_PREFIX);
 		sb.append("# Generated on " + Instant.now().toString());
@@ -51,8 +88,6 @@ public class Giga {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-		
-		System.out.println("Done writing manifest!");
 		
 	}
 	

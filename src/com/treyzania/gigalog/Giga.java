@@ -67,7 +67,6 @@ public class Giga {
 			
 			try {
 				
-				outFile.getParentFile().mkdirs();
 				outFile.createNewFile();
 				
 			} catch (IOException ioe) {

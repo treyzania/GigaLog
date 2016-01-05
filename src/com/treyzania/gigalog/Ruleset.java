@@ -15,7 +15,7 @@ public class Ruleset {
 			boolean hasAll = true;
 			
 			for (String word : ruleEntry) {
-				hasAll &= line.contains(word);
+				hasAll &= line.toLowerCase().contains(word.toLowerCase());
 			}
 			
 			if (hasAll) return true;

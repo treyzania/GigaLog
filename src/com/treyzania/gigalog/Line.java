@@ -2,6 +2,8 @@ package com.treyzania.gigalog;
 
 public class Line {
 
+	public static int maxDigits = -1;
+	
 	public final long number;
 	public final String text;
 	
@@ -10,11 +12,15 @@ public class Line {
 		this.number = num;
 		this.text = text;
 		
+		maxDigits = (int) Math.max(maxDigits, Math.ceil(Math.log10(num)));
+		
 	}
 
 	@Override
 	public String toString() {
-		return Long.toString(this.number) + ": " + text;
+		
+		return String.format("%" + maxDigits + "d", this.number) + ": " + text;
+		
 	}
 	
 }

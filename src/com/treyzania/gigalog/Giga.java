@@ -8,4 +8,10 @@ public class Giga {
 		
 	}
 	
+	public static void writeLines() {
+		
+		
+		
+	}
+	
 }

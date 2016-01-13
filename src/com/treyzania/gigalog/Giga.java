@@ -107,4 +107,13 @@ public class Giga {
 		
 	}
 	
+	private static String getReadableDate() {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+		Date result = new Date(System.currentTimeMillis());
+		
+		return sdf.format(result);
+		
+	}
+	
 }
